@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json.schemastore.org/staticwebapp.config.json",
+  "trailingSlash": "always",
+  "routes": [
+    {
+      "route": "/αρχική",
+      "redirect": "/",
+      "statusCode": 301
+    },
+    {
+      "route": "/%CE%B1%CF%81%CF%87%CE%B9%CE%BA%CE%AE",
+      "redirect": "/",
+      "statusCode": 301
+    },
+    {
+      "route": "/νέα",
+      "redirect": "/news/",
+      "statusCode": 301
+    },
+    {
+      "route": "/%CE%BD%CE%AD%CE%B1",
+      "redirect": "/news/",
+      "statusCode": 301
+    },
+    {
+      "route": "/επικοινωνία",
+      "redirect": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "route": "/%CE%B5%CF%80%CE%B9%CE%BA%CE%BF%CE%B9%CE%BD%CF%89%CE%BD%CE%AF%CE%B1",
+      "redirect": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "route": "/home",
+      "redirect": "/",
+      "statusCode": 301
+    },
+    {
+      "route": "/assets/*",
+      "headers": {
+        "Cache-Control": "public, max-age=604800"
+      }
+    }
+  ],
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/404.html",
+      "statusCode": 404
+    }
+  },
+  "globalHeaders": {
+    "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; frame-src https://www.youtube-nocookie.com https://docs.google.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests",
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+    "X-Frame-Options": "SAMEORIGIN"
+  },
+  "mimeTypes": {
+    ".woff2": "font/woff2"
+  }
+}

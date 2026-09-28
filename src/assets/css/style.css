@@ -1,0 +1,237 @@
+/* ==========================================================================
+   SafeCity – στατικό site (WCAG 2.1 AA)
+   Χρώματα: όλοι οι συνδυασμοί κειμένου/φόντου έχουν αντίθεση ≥ 4.5:1
+   ========================================================================== */
+
+/* ---------- Γραμματοσειρές (self-hosted, χωρίς Google Fonts CDN) ---------- */
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("../fonts/open-sans-greek-400-normal.woff2") format("woff2");
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF; }
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("../fonts/open-sans-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("../fonts/open-sans-greek-700-normal.woff2") format("woff2");
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF; }
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("../fonts/open-sans-latin-700-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Roboto"; font-style: normal; font-weight: 500; font-display: swap;
+  src: url("../fonts/roboto-greek-500-normal.woff2") format("woff2");
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF; }
+@font-face { font-family: "Roboto"; font-style: normal; font-weight: 500; font-display: swap;
+  src: url("../fonts/roboto-latin-500-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Roboto"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("../fonts/roboto-greek-700-normal.woff2") format("woff2");
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF; }
+@font-face { font-family: "Roboto"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("../fonts/roboto-latin-700-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+/* ---------- Μεταβλητές ---------- */
+:root {
+  --text: #212121;          /* 16.1:1 σε λευκό */
+  --muted: #5f5f5f;         /* 6.4:1 σε λευκό */
+  --bg: #ffffff;
+  --band: #eef6f9;          /* ανοιχτό γαλάζιο πλαίσιο τίτλων ενότητας */
+  --brand: #1f7591;         /* footer – λευκό κείμενο 5.2:1 */
+  --brand-dark: #0b5f78;    /* σύνδεσμοι hover / focus – 7.2:1 σε λευκό */
+  --focus: #0b5f78;
+  --banner-fallback: #1c3440;
+  --maxw: 71.25rem;         /* 1140px */
+  --font-body: "Open Sans", Arial, Helvetica, sans-serif;
+  --font-head: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+/* ---------- Βάση ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: 5rem; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+img { max-width: 100%; height: auto; display: block; }
+h1, h2, h3 { font-family: var(--font-head); line-height: 1.25; margin: 0 0 .75rem; }
+p { margin: 0 0 1rem; }
+
+a { color: inherit; text-decoration: underline; text-underline-offset: .15em; text-decoration-thickness: 1px; }
+a:hover { color: var(--brand-dark); text-decoration-thickness: 2px; }
+
+/* Ορατό focus για πληκτρολόγιο (WCAG 2.4.7) */
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 2px; }
+.site-footer :focus-visible, .banner :focus-visible { outline-color: #ffffff; }
+
+/* Κείμενο μόνο για αναγνώστες οθόνης */
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+/* ---------- Skip link (WCAG 2.4.1) ---------- */
+.skip-link {
+  position: absolute; left: .5rem; top: -100px; z-index: 1000;
+  background: var(--text); color: #fff; padding: .75rem 1rem; font-weight: 700;
+  text-decoration: none; border-radius: 0 0 4px 4px;
+}
+.skip-link:focus { top: 0; color: #fff; outline: 3px solid #fff; outline-offset: -6px; }
+
+/* ---------- Header / πλοήγηση ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: #fff; box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: .5rem 1.5rem; min-height: 4rem; padding: .25rem 1rem;
+}
+.brand {
+  display: inline-flex; align-items: center; gap: .75rem;
+  font-family: var(--font-head); font-weight: 500; font-size: 1.6667rem;
+  color: var(--text); text-decoration: none; letter-spacing: .02em;
+}
+.brand:hover { color: var(--text); }
+.brand img { width: 3rem; height: 3rem; }
+
+.nav-toggle { display: none; }
+.site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; }
+.site-nav li { display: flex; align-items: center; }
+.site-nav li + li::before {
+  content: ""; width: 3px; height: 3px; border-radius: 50%;
+  background: var(--muted); margin: 0 .6rem;
+}
+.site-nav a {
+  display: inline-block; padding: .5rem .25rem; color: var(--muted);
+  text-decoration: none; border-bottom: 2px solid transparent;
+}
+.site-nav a:hover { color: var(--text); border-bottom-color: currentColor; }
+.site-nav a[aria-current="page"] { color: var(--text); font-weight: 700; border-bottom-color: var(--brand); }
+
+/* ---------- Banner με τον τίτλο σελίδας ---------- */
+.banner {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 20rem; padding: 3rem 1rem;
+  background-color: var(--banner-fallback);   /* χρώμα για έλεγχο αντίθεσης */
+  background-size: cover; background-position: center;
+  color: #fff; text-align: center;
+}
+.banner::before {  /* σκοτείνιασμα για αναγνωσιμότητα του λευκού τίτλου */
+  content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .45);
+}
+.banner h1 {
+  position: relative; margin: 0;
+  font-weight: 500; font-size: clamp(2.25rem, 6vw, 3.75rem);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, .6);
+}
+.banner--home      { background-image: url("../img/banner-home.jpg"); }
+.banner--consortium{ background-image: url("../img/banner-consortium.jpg"); }
+.banner--media     { background-image: url("../img/banner-media.jpg"); }
+.banner--news      { background-image: url("../img/banner-news.jpg"); }
+.banner--contact   { background-image: url("../img/banner-contact.jpg"); }
+
+/* ---------- Γενική διάταξη ---------- */
+.container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 1rem; }
+.section { padding: 2.5rem 0; }
+.section--tight { padding: 1.5rem 0; }
+.band { background: var(--band); padding: 1.75rem 0; }
+.band h2 { font-weight: 700; font-size: clamp(1.75rem, 3.5vw, 2.1667rem); margin: 0; }
+.center { text-align: center; }
+.measure { max-width: 40rem; margin-left: auto; margin-right: auto; }
+
+/* Αρχική */
+.funding { padding: 1.5rem 0 0; }
+.funding img { margin: 0 auto; width: 100%; max-width: 50rem; }
+.overview { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; align-items: start; }
+.overview__logo { max-width: 12rem; margin: 0 auto; }
+.video { margin: 0 auto; max-width: 50rem; }
+.video__frame { position: relative; aspect-ratio: 16 / 9; background: #000; }
+.video__frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video figcaption { margin-top: .5rem; font-size: .9375rem; color: var(--muted); }
+
+/* Κοινοπραξία */
+.partners { display: grid; gap: 2.5rem; }
+.partner { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; align-items: start; }
+.partner__logo { max-width: 16rem; }
+.partner h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: .25rem; }
+.partner__role { font-size: .9375rem; font-weight: 700; color: var(--muted); margin-bottom: .75rem; } /* <16px: δεν θεωρείται «possible heading» από το WAVE */
+
+/* Media */
+.posters { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; justify-items: center; }
+.poster { margin: 0; max-width: 34rem; }
+.poster img { border: 1px solid #d0d7da; }
+.poster figcaption { margin-top: .5rem; font-size: .9375rem; color: var(--muted); text-align: center; }
+details.transcript { margin-top: 2rem; border: 1px solid #c9d5da; border-radius: 4px; padding: 0 1rem; background: #fafcfd; }
+details.transcript summary { cursor: pointer; font-weight: 700; padding: .75rem 0; }
+details.transcript[open] { padding-bottom: 1rem; }
+details.transcript h3 { font-size: 1.125rem; margin-top: 1rem; }
+
+/* Νέα */
+.news-list { list-style: none; margin: 0; padding: 0; }
+.news-item { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; padding: 2.5rem 0; border-top: 1px solid #e0e6e8; }
+.news-item:first-child { border-top: 0; }
+.news-item h2 { font-weight: 700; font-size: clamp(1.5rem, 3vw, 2.1667rem); }
+.news-media { display: grid; gap: .75rem; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; }
+.news-media img { width: 100%; height: 100%; object-fit: cover; }
+.news-media--single, .news-media--stack { grid-template-columns: minmax(0, 1fr); }
+.news-media .span-2 { grid-column: 1 / -1; }
+
+/* Επικοινωνία */
+.form-embed { width: 100%; max-width: 40rem; margin: 0 auto; }
+.form-embed iframe { width: 100%; height: 56rem; border: 1px solid #c9d5da; background: #fff; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--brand); color: #fff; padding: 1.75rem 0; text-align: center; }
+.site-footer p { margin: 0 0 .5rem; font-size: .9375rem; font-weight: 700; }
+.site-footer ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; gap: .25rem 1.5rem; }
+.site-footer a { color: #fff; }
+.site-footer a:hover { color: #fff; text-decoration-thickness: 2px; }
+
+/* ---------- Responsive ---------- */
+@media (min-width: 48em) {   /* ≥ 768px */
+  .overview { grid-template-columns: 14rem minmax(0, 1fr); gap: 3rem; }
+  .overview__logo { margin: 0; }
+  .partner { grid-template-columns: 16rem minmax(0, 1fr); gap: 2.5rem; }
+  .posters { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .news-item { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 3rem; align-items: start; }
+}
+
+@media (max-width: 47.99em) {  /* κινητά: κουμπί μενού */
+  .js .nav-toggle {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font: inherit; font-weight: 700; color: var(--text); background: #fff;
+    border: 2px solid var(--text); border-radius: 4px; padding: .4rem .75rem; cursor: pointer;
+  }
+  .nav-toggle__bars, .nav-toggle__bars::before, .nav-toggle__bars::after {
+    display: block; width: 1.125rem; height: 2px; background: currentColor; position: relative; content: "";
+  }
+  .nav-toggle__bars::before { position: absolute; top: -6px; }
+  .nav-toggle__bars::after  { position: absolute; top: 6px; }
+  .js .site-nav { width: 100%; }
+  .js .site-nav[hidden] { display: none; }
+  .site-nav ul { flex-direction: column; align-items: stretch; padding-bottom: .5rem; }
+  .site-nav li { display: block; }
+  .site-nav li + li::before { display: none; }
+  .banner { min-height: 13rem; padding: 2rem 1rem; }
+  .site-nav a { display: block; padding: .75rem .25rem; border-bottom: 1px solid #e3e3e3; }
+  .site-nav a[aria-current="page"] { border-left: 4px solid var(--brand); padding-left: .75rem; border-bottom-color: #e3e3e3; }
+}
+
+/* Σεβασμός προτιμήσεων χρήστη */
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+}
+@media (forced-colors: active) {
+  .banner::before { display: none; }
+  .site-nav a[aria-current="page"] { text-decoration: underline; }
+}
+@media print {
+  .site-header, .skip-link, .video, .form-embed iframe { display: none; }
+  .banner { min-height: 0; padding: 1rem 0; color: #000; background: none; }
+  .banner::before { display: none; }
+  .banner h1 { text-shadow: none; }
+}
