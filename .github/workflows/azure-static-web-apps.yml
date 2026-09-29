@@ -1,11 +1,11 @@
 name: Deploy στο Azure Static Web Apps
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    types: [ opened, synchronize, reopened, closed ]
-    branches: [ main ]
+  # push:
+  #   branches: [ main ]
+  # pull_request:
+  #   types: [ opened, synchronize, reopened, closed ]
+  #   branches: [ main ]
   workflow_dispatch:
 
 permissions:
